@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#e53935">
+  <title>PLUS ULTRA! — HIRA COLLECT</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div class="hero-top">
+        <span class="eyebrow">NISSIN × MY HERO ACADEMIA</span>
+        <span class="edition">COLLECTION FILE · 033</span>
+      </div>
+      <div class="hero-copy">
+        <p class="hero-kicker">YOUR MISSION STARTS NOW</p>
+        <h1>PLUS<br><em>ULTRA!</em></h1>
+        <p class="hero-subtitle">COLLECTION TRACKER</p>
+      </div>
+      <div class="hero-stamp" aria-hidden="true"><span>GO!</span><b>PLUS<br>ULTRA</b></div>
+      <div class="hero-bottom">
+        <span>PRO HERO ARCHIVE</span>
+        <span>COLLECT ALL 33</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="progress-panel" aria-labelledby="progress-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">YOUR COLLECTION</p>
+            <h2 id="progress-title">수집 현황</h2>
+          </div>
+          <span class="count-chip"><b id="owned-count">0</b><span> / 33</span></span>
+        </div>
+        <div class="progress-track" role="progressbar" aria-label="수집 달성률" aria-valuemin="0" aria-valuemax="33" aria-valuenow="0" id="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="progress-meta">
+          <span id="progress-message">히어로 수집을 시작해 보자!</span>
+          <strong id="progress-percent">0%</strong>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card stat-owned"><span class="stat-icon">✓</span><span class="stat-label">수집 완료</span><strong id="stat-owned">0</strong></div>
+          <div class="stat-card"><span class="stat-icon">＋</span><span class="stat-label">미수집</span><strong id="stat-missing">33</strong></div>
+          <div class="stat-card"><span class="stat-icon">★</span><span class="stat-label">전체 종류</span><strong>33</strong></div>
+        </div>
+      </section>
+
+      <section class="catalog-section" aria-labelledby="catalog-title">
+        <div class="catalog-heading">
+          <div>
+            <p class="section-kicker">ITEM DATABASE</p>
+            <h2 id="catalog-title">컬렉션 리스트 <span>33</span></h2>
+          </div>
+          <button class="reset-button" id="reset-button" type="button">초기화</button>
+        </div>
+
+        <label class="search-box">
+          <span aria-hidden="true">⌕</span>
+          <input id="search-input" type="search" placeholder="제품 번호 또는 이름 검색" autocomplete="off">
+          <button id="clear-search" type="button" aria-label="검색어 지우기" hidden>×</button>
+        </label>
+
+        <div class="filter-row" role="group" aria-label="수집 상태 필터">
+          <button class="filter-button is-active" data-filter="all" type="button">전체 <span id="filter-all-count">33</span></button>
+          <button class="filter-button" data-filter="missing" type="button">미수집 <span id="filter-missing-count">33</span></button>
+          <button class="filter-button" data-filter="owned" type="button">수집 완료 <span id="filter-owned-count">0</span></button>
+        </div>
+
+        <div class="list-meta">
+          <span id="results-label">전체 제품 33종</span>
+          <span>탭해서 체크 <b>↗</b></span>
+        </div>
+        <div id="product-grid" class="product-grid"></div>
+        <div id="empty-state" class="empty-state" hidden>
+          <span>?</span>
+          <strong>검색 결과가 없어!</strong>
+          <p>검색어나 필터를 바꿔 봐.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>PLUS ULTRA!</span>
+      <span>ONE STEP CLOSER TO ALL 33.</span>
+    </footer>
+  </div>
+  <dialog id="reset-dialog" class="confirm-dialog">
+    <form method="dialog">
+      <p class="dialog-kicker">ARE YOU SURE?</p>
+      <h2>수집 기록을 초기화할까?</h2>
+      <p>체크한 수집 상태가 모두 해제돼. 이 작업은 되돌릴 수 없어.</p>
+      <div class="dialog-actions">
+        <button class="cancel-button" value="cancel">취소</button>
+        <button class="confirm-button" id="confirm-reset" value="confirm">초기화하기</button>
+      </div>
+    </form>
+  </dialog>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,821 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap');
+
+/* ========================================
+   1. 기본 설정
+======================================== */
+
+:root {
+  color-scheme: light;
+
+  --red: #e53935;
+  --red-dark: #b91f25;
+  --ink: #171717;
+  --muted: #77736f;
+  --paper: #fffdf9;
+  --line: #e9e4de;
+  --yellow: #ffd84d;
+  --green: #32845a;
+  --shadow: 0 8px 26px rgba(36, 27, 20, .07);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #f3f0eb;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: #f3f0eb;
+  font-family: "Noto Sans KR", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ========================================
+   2. 앱 레이아웃
+======================================== */
+
+.app-shell {
+  width: min(100%, 680px);
+  min-height: 100dvh;
+  margin: 0 auto;
+  overflow: hidden;
+  background: var(--paper);
+  box-shadow: 0 0 50px rgba(0, 0, 0, .05);
+}
+
+/* ========================================
+   3. 히어로 영역
+======================================== */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 286px;
+  padding: max(22px, env(safe-area-inset-top)) 24px 19px;
+  color: white;
+  background: var(--red);
+}
+
+.hero::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  background: repeating-linear-gradient(
+    135deg,
+    transparent 0 18px,
+    rgba(255, 255, 255, .065) 18px 20px
+  );
+}
+
+.hero::after {
+  position: absolute;
+  z-index: -1;
+  right: -42px;
+  bottom: 5px;
+  color: rgba(100, 0, 0, .13);
+  content: "PLUS ULTRA";
+  font: 900 clamp(54px, 15vw, 105px)/.8 "Barlow Condensed", sans-serif;
+  white-space: nowrap;
+  transform: rotate(-8deg);
+}
+
+.hero-top,
+.hero-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.eyebrow {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .09em;
+}
+
+.edition,
+.hero-bottom {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .1em;
+}
+
+.edition {
+  padding: 5px 7px;
+  border: 1px solid rgba(255, 255, 255, .6);
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  margin-top: 29px;
+}
+
+.hero-kicker {
+  margin: 0 0 4px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .19em;
+}
+
+.hero h1 {
+  margin: 0;
+  font: 900 clamp(60px, 15vw, 86px)/.76 "Barlow Condensed", Impact, sans-serif;
+  letter-spacing: -.035em;
+  transform: skew(-5deg);
+}
+
+.hero h1 em {
+  color: var(--yellow);
+  font-style: normal;
+}
+
+.hero-subtitle {
+  margin: 12px 0 0;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .28em;
+}
+
+.hero-stamp {
+  position: absolute;
+  top: 102px;
+  right: 26px;
+  display: flex;
+  width: 92px;
+  height: 92px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid white;
+  border-radius: 50%;
+  color: var(--ink);
+  text-align: center;
+  background: var(--yellow);
+  box-shadow: 4px 5px 0 rgba(0, 0, 0, .15);
+  transform: rotate(12deg);
+}
+
+.hero-stamp span {
+  padding: 0 6px 2px;
+  border-bottom: 2px solid var(--ink);
+  font: 900 12px "Barlow Condensed", sans-serif;
+}
+
+.hero-stamp b {
+  margin-top: 3px;
+  font: 900 16px/.85 "Barlow Condensed", sans-serif;
+}
+
+.hero-bottom {
+  margin-top: 31px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, .45);
+}
+
+/* ========================================
+   4. 메인 영역
+======================================== */
+
+main {
+  padding: 23px 18px 30px;
+}
+
+/* ========================================
+   5. 수집 현황 및 달성률
+======================================== */
+
+.progress-panel {
+  padding: 19px 16px 15px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.section-heading,
+.catalog-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.section-kicker {
+  margin: 0 0 4px;
+  color: var(--red);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .16em;
+}
+
+h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: -.05em;
+}
+
+.count-chip {
+  display: flex;
+  align-items: baseline;
+  padding: 7px 10px;
+  border-radius: 9px;
+  color: var(--red);
+  background: #fff0ef;
+}
+
+.count-chip b {
+  font: 900 27px/.9 "Barlow Condensed", sans-serif;
+}
+
+.count-chip span {
+  color: #8b6c6a;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.progress-track {
+  height: 10px;
+  overflow: hidden;
+  margin-top: 18px;
+  border-radius: 99px;
+  background: #f0ece7;
+}
+
+.progress-fill {
+  position: relative;
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--red-dark), #ff665c);
+  transition: width .25s ease;
+}
+
+.progress-fill::after {
+  display: block;
+  height: 100%;
+  content: "";
+  background: repeating-linear-gradient(
+    135deg,
+    transparent 0 5px,
+    rgba(255, 255, 255, .24) 5px 8px
+  );
+}
+
+.progress-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.progress-meta strong {
+  color: var(--red);
+  font-size: 13px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 17px;
+}
+
+.stat-card {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: 20px 1fr;
+  align-items: center;
+  column-gap: 4px;
+  padding: 10px 9px;
+  border-radius: 12px;
+  background: #f8f6f2;
+}
+
+.stat-icon {
+  display: grid;
+  width: 19px;
+  height: 19px;
+  place-items: center;
+  border-radius: 6px;
+  color: var(--red);
+  background: white;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.stat-label {
+  color: #77716b;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.stat-card strong {
+  grid-column: 2;
+  margin-top: 5px;
+  font: 800 25px/1 "Barlow Condensed", sans-serif;
+}
+
+.stat-owned .stat-icon {
+  color: var(--green);
+  background: #e3f4e9;
+}
+
+/* ========================================
+   6. 제품 카탈로그 제목
+======================================== */
+
+.catalog-section {
+  padding-top: 29px;
+}
+
+.catalog-heading {
+  margin-bottom: 15px;
+}
+
+.catalog-heading h2 span {
+  display: inline-grid;
+  place-items: center;
+  margin-left: 3px;
+  padding: 4px 6px;
+  border-radius: 5px;
+  color: white;
+  background: var(--ink);
+  font: 800 11px "Barlow Condensed", sans-serif;
+  letter-spacing: 0;
+  vertical-align: 3px;
+}
+
+.reset-button {
+  padding: 8px 11px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: #716b65;
+  background: transparent;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* ========================================
+   7. 검색창
+======================================== */
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 0 12px;
+  border: 1px solid #e7e1db;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.search-box > span {
+  color: #827b74;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.search-box input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  color: var(--ink);
+  background: transparent;
+  font-size: 13px;
+}
+
+.search-box input::placeholder {
+  color: #aaa39b;
+}
+
+.search-box button {
+  width: 24px;
+  height: 24px;
+  border: 0;
+  border-radius: 50%;
+  color: #5f5953;
+  background: #eee9e3;
+  font-size: 17px;
+}
+
+/* ========================================
+   8. 필터 버튼
+======================================== */
+
+.filter-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+  margin-top: 12px;
+}
+
+.filter-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 39px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: #6d6761;
+  background: #fff;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.filter-button span {
+  display: inline-grid;
+  min-width: 19px;
+  height: 19px;
+  place-items: center;
+  padding: 0 4px;
+  border-radius: 6px;
+  color: #77716b;
+  background: #f2efeb;
+  font: 700 11px "Barlow Condensed", sans-serif;
+}
+
+.filter-button.is-active {
+  border-color: var(--ink);
+  color: white;
+  background: var(--ink);
+}
+
+.filter-button.is-active span {
+  color: white;
+  background: rgba(255, 255, 255, .18);
+}
+
+/* ========================================
+   9. 제품 목록 정보
+======================================== */
+
+.list-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 17px 1px 10px;
+  color: #89827a;
+  font-size: 10px;
+}
+
+.list-meta b {
+  color: var(--red);
+}
+
+/* ========================================
+   10. 제품 카드 그리드
+======================================== */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.product-card {
+  position: relative;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #e9e3dc;
+  border-radius: 13px;
+  color: var(--ink);
+  text-align: left;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .025);
+  cursor: pointer;
+  transition:
+    border-color .15s,
+    transform .15s,
+    background .15s;
+}
+
+.product-card:active {
+  transform: scale(.985);
+}
+
+.product-card:focus-visible,
+button:focus-visible {
+  outline: 3px solid #ffbd43;
+  outline-offset: 2px;
+}
+
+.product-card.is-owned {
+  border-color: #9cc9aa;
+  background: #f4fbf5;
+}
+
+/* ========================================
+   11. 제품 이미지
+======================================== */
+
+.product-visual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 676 / 866;
+  height: auto;
+  overflow: hidden;
+  border-radius: 9px;
+  background: #fff;
+}
+
+.product-card.is-owned .product-visual {
+  background: #fff;
+}
+
+.product-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.product-symbol {
+  color: rgba(30, 30, 30, .17);
+  font: 900 45px/.9 "Barlow Condensed", sans-serif;
+  transform: rotate(-9deg);
+}
+
+/* 제품 번호 */
+
+.product-visual .product-number {
+  position: absolute;
+  z-index: 2;
+  top: 7px;
+  left: 7px;
+  padding: 4px 6px;
+  border-radius: 5px;
+  color: white;
+  background: var(--ink);
+  font: 800 11px "Barlow Condensed", sans-serif;
+  letter-spacing: .04em;
+}
+
+/* 수집 완료 체크 */
+
+.owned-mark {
+  position: absolute;
+  z-index: 2;
+  top: 8px;
+  right: 8px;
+  display: grid;
+  width: 25px;
+  height: 25px;
+  place-items: center;
+  border-radius: 50%;
+  color: white;
+  background: var(--green);
+  font-size: 14px;
+  font-weight: 900;
+  opacity: 0;
+  transform: scale(.7);
+  transition: .15s;
+}
+
+.is-owned .owned-mark {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* 수집 상태 라벨 */
+
+.product-visual .status-label {
+  position: absolute;
+  z-index: 2;
+  right: 7px;
+  bottom: 7px;
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 5px;
+  color: #77716b;
+  background: rgba(255, 255, 255, .92);
+  font-size: 9px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.product-card.is-owned .product-visual .status-label {
+  color: #267347;
+  background: #dcefe1;
+}
+
+/* ========================================
+   12. 카드 하단 정보
+======================================== */
+
+.card-info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.card-title {
+  display: block;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.45;
+}
+
+.card-subtitle {
+  display: block;
+  margin-top: 3px;
+  color: #8b837b;
+  font-size: 10px;
+}
+
+.status-label {
+  display: inline-block;
+  padding: 4px 5px;
+  border-radius: 5px;
+  color: #7e766d;
+  background: #f1eee9;
+  font-size: 9px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.is-owned .status-label {
+  color: #267347;
+  background: #dcefe1;
+}
+
+/* ========================================
+   13. 검색 결과 없음
+======================================== */
+
+.empty-state {
+  padding: 35px 10px;
+  color: #827b73;
+  text-align: center;
+}
+
+.empty-state > span {
+  display: inline-grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border-radius: 50%;
+  background: #f2eee8;
+  font-weight: 900;
+}
+
+.empty-state strong {
+  display: block;
+  margin-top: 10px;
+  color: var(--ink);
+}
+
+.empty-state p {
+  font-size: 12px;
+}
+
+.note {
+  margin: 17px 1px 0;
+  color: #9a9289;
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+/* ========================================
+   14. 푸터
+======================================== */
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 17px 20px max(17px, env(safe-area-inset-bottom));
+  color: white;
+  background: #191919;
+  font: 800 10px "Barlow Condensed", sans-serif;
+  letter-spacing: .12em;
+}
+
+footer span:first-child {
+  color: var(--yellow);
+  font-size: 13px;
+}
+
+/* ========================================
+   15. 초기화 확인 다이얼로그
+======================================== */
+
+.confirm-dialog {
+  width: calc(100% - 36px);
+  max-width: 370px;
+  padding: 23px;
+  border: 0;
+  border-radius: 18px;
+  box-shadow: 0 20px 70px rgba(0, 0, 0, .25);
+}
+
+.confirm-dialog::backdrop {
+  background: rgba(20, 17, 15, .5);
+  backdrop-filter: blur(3px);
+}
+
+.dialog-kicker {
+  color: var(--red);
+  font: 900 10px "Barlow Condensed", sans-serif;
+  letter-spacing: .16em;
+}
+
+.confirm-dialog h2 {
+  font-size: 20px;
+}
+
+.confirm-dialog form > p:not(.dialog-kicker) {
+  color: #77716b;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.dialog-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.dialog-actions button {
+  flex: 1;
+  min-height: 42px;
+  border: 0;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.cancel-button {
+  color: #4e4944;
+  background: #f1eee9;
+}
+
+.confirm-button {
+  color: white;
+  background: var(--red);
+}
+
+/* ========================================
+   16. 태블릿 및 PC 반응형
+======================================== */
+
+@media (min-width: 520px) {
+  main {
+    padding: 27px 26px 36px;
+  }
+
+  .hero {
+    min-height: 315px;
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+
+  .hero-copy {
+    margin-top: 38px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ========================================
+   17. 모션 최소화 설정
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
